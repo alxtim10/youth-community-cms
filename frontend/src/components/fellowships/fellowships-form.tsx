@@ -138,7 +138,7 @@ export default function FellowshipForm({ initialData, fellowshipId }: any) {
         disabled={isSubmitting}
         className="px-6 py-3 rounded-2xl bg-slate-900 text-white"
       >
-        {isEdit ? "Update Fellowship" : "Create Fellowship"}
+        {isEdit ? "Update Fellowship" : "Add Fellowship"}
       </button>
       {errors.theme && (
         <p className="text-sm text-red-500">{errors.theme.message}</p>

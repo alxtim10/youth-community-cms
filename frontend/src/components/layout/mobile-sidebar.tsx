@@ -8,10 +8,11 @@ import {
   CalendarDays,
   Folder,
   BarChart3,
-  Calendar
+  Calendar,
 } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const menus = [
   {
@@ -61,23 +62,15 @@ export default function MobileSidebar() {
           side="left"
           className="w-80 bg-white border-r border-slate-200 p-0"
         >
-          <div className="px-6 pt-8 pb-6 border-b border-slate-100">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">Y</span>
-              </div>
-
-              <div>
-                <h1 className="font-bold text-xl tracking-tight">Youth CMS</h1>
-
-                <p className="text-sm text-slate-500 mt-0.5">
-                  Community Dashboard
-                </p>
-              </div>
-            </div>
+          <SheetTitle></SheetTitle>
+          <div className="px-8 pt-8 pb-4 flex flex-col items-center">
+            <Image src="/logo.png" width={100} height={100} alt="logo" />
+            <h1 className="font-bold text-xl tracking-tight text-slate-900 mt-5">
+              SIMUDA Dashboard
+            </h1>
           </div>
 
-          <nav className="mt-10 space-y-2">
+          <nav className="space-y-2 px-4">
             {menus.map((menu) => {
               const Icon = menu.icon;
 

@@ -18,7 +18,7 @@ export default function MembersTable({ members }: Props) {
         <EmptyState
           title="No Members Found"
           description="Start adding community members to manage your youth fellowship."
-          buttonText="Create Member"
+          buttonText="Add Member"
           href="/members/create"
         />
       }

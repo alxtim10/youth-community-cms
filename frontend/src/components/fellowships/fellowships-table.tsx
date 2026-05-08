@@ -20,8 +20,8 @@ export default function FellowshipsTable({ fellowships }: Props) {
       emptyState={
         <EmptyState
           title="No Fellowships Found"
-          description="Create your first fellowship event to start managing schedules and attendance."
-          buttonText="Create Fellowship"
+          description="Add your first fellowship event to start managing schedules and attendance."
+          buttonText="Add Fellowship"
           href="/fellowships/create"
         />
       }
@@ -33,8 +33,7 @@ export default function FellowshipsTable({ fellowships }: Props) {
         {
           key: "theme",
           label: "Theme",
-
-          render: (value: string, row: Fellowship) => (
+          render: (value: string, row: any) => (
             <Link
               href={`/fellowships/${row.id}`}
               className="font-medium hover:underline"

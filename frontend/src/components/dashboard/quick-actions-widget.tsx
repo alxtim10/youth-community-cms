@@ -9,7 +9,7 @@ import {
 
 const actions = [
   {
-    title: "Create Fellowship",
+    title: "Add Fellowship",
     href: "/fellowships/create",
     icon: CalendarDays,
   },

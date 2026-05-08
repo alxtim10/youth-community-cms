@@ -7,7 +7,7 @@ export default function CreateMemberPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-4xl font-bold tracking-tight">
-          Create Member
+          Add
         </h1>
 
         <p className="text-slate-500 mt-2">

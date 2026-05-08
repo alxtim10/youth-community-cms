@@ -19,14 +19,14 @@ export default async function FellowshipsPage({ searchParams }: any) {
         <div>
           <h1 className="text-4xl font-bold tracking-tight">Fellowships</h1>
 
-          <p className="text-slate-500 mt-2">Manage fellowship events</p>
+          <p className="text-slate-500 mt-2">Manage fellowships</p>
         </div>
 
         <Link
           href="/fellowships/create"
           className="px-5 py-3 rounded-2xl bg-slate-900 text-white"
         >
-          Create Fellowship
+          Add
         </Link>
       </div>
 
