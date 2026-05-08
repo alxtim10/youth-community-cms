@@ -82,14 +82,14 @@ class FellowshipCountAPIView(APIView):
         qs = (
             FellowshipEvent.objects
             .annotate(month_date=TruncMonth('date'))
-            .values('month')
+            .values('month_date')
             .annotate(total=Count('id'))
-            .order_by('month')
+            .order_by('month_date')
         )
 
         data = [
             {
-                "month": item['month'].strftime("%b"),
+                "month": item['month_date'].strftime("%b"),
                 "total": item['total']
             }
             for item in qs
