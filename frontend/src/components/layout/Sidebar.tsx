@@ -22,31 +22,26 @@ const menus = [
     href: "/",
     icon: LayoutDashboard,
   },
-
-  {
-    name: "Members",
-    href: "/members",
-    icon: Users,
-  },
-
-  {
-    name: "Fellowships",
-    href: "/fellowships",
-    icon: CalendarDays,
-  },
-
   {
     name: "Calendar",
     href: "/calendar",
     icon: Calendar,
   },
-
+  {
+    name: "Members",
+    href: "/members",
+    icon: Users,
+  },
+  {
+    name: "Fellowships",
+    href: "/fellowships",
+    icon: CalendarDays,
+  },
   {
     name: "Files",
     href: "/files",
     icon: Folder,
   },
-
   {
     name: "Analytics",
     href: "/analytics",
@@ -106,29 +101,6 @@ export default function Sidebar() {
           );
         })}
       </nav>
-
-      {/* Bottom Section */}
-      <div className="p-4 border-t border-slate-100">
-        <div className="rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 p-5 text-white shadow-xl">
-          <p className="text-sm text-slate-300">Youth Community</p>
-
-          <h2 className="mt-2 text-lg font-semibold leading-snug">
-            Manage your fellowship events and members easily.
-          </h2>
-
-          <div className="mt-5 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm">
-              <span className="font-semibold">Y</span>
-            </div>
-
-            <div>
-              <p className="text-sm font-medium">Admin</p>
-
-              <p className="text-xs text-slate-400">Community Leader</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </aside>
   );
 }
