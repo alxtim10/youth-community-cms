@@ -4,6 +4,8 @@ node_modules/
 # Python - venvs/ and __pycache__
 venv/
 config/__pycache__
+__pycache__/
+*.pyc
 
 # Java - target/
 target/
