@@ -4,8 +4,13 @@ import EmptyState from "@/components/shared/empty-state";
 import FellowshipsAction from "./fellowships-action";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Fellowship } from "@/types";
 
-export default function FellowshipsTable({ fellowships }: any) {
+interface Props {
+  fellowships: Fellowship[];
+}
+
+export default function FellowshipsTable({ fellowships }: Props) {
   const router = useRouter();
 
   return (
@@ -29,7 +34,7 @@ export default function FellowshipsTable({ fellowships }: any) {
           key: "theme",
           label: "Theme",
 
-          render: (value: string, row: any) => (
+          render: (value: string, row: Fellowship) => (
             <Link
               href={`/fellowships/${row.id}`}
               className="font-medium hover:underline"
@@ -86,7 +91,7 @@ export default function FellowshipsTable({ fellowships }: any) {
           key: "actions",
           label: "Actions",
 
-          render: (_: any, row: any) => (
+          render: (row: Fellowship) => (
             <FellowshipsAction fellowshipId={row.id} />
           ),
         },

@@ -283,3 +283,20 @@ export async function getAllFellowships() {
 
   return res.json();
 }
+
+export async function getUpcomingFellowship() {
+  const res = await fetch(
+    `${API_URL}/fellowships/?ordering=date&page_size=1`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error(
+      "Failed to fetch upcoming fellowship"
+    );
+  }
+
+  return res.json();
+}

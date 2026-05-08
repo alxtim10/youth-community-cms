@@ -1,32 +1,47 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-
 import FullCalendar from "@fullcalendar/react";
-
 import dayGridPlugin from "@fullcalendar/daygrid";
+import { Fellowship } from "@/types";
 
-export default function FellowshipCalendar({ fellowships }: any) {
+interface Props {
+  fellowships: Fellowship[];
+}
+
+interface LegendProps {
+  color: string;
+  label: string;
+}
+
+export default function FellowshipCalendar({ fellowships }: Props) {
   const router = useRouter();
 
-  const events = fellowships.map((item: any) => {
+  const events = fellowships.map(
+  (item) => {
     const isDone =
-      item.speaker_status === "DONE" && item.worship_team_status === "DONE";
+      item.speaker_status ===
+        "DONE" &&
+      item.worship_team_status ===
+        "DONE";
 
     return {
-      id: item.id,
+      id: String(item.id),
 
       title: item.theme,
 
       date: item.date,
 
-      backgroundColor: isDone ? "#16a34a" : "#eab308",
+      backgroundColor: isDone
+        ? "#16a34a"
+        : "#eab308",
 
       borderColor: "transparent",
 
       textColor: "#ffffff",
     };
-  });
+  }
+);
 
   return (
     <div className="bg-white rounded-3xl shadow-sm p-6">
@@ -50,7 +65,7 @@ export default function FellowshipCalendar({ fellowships }: any) {
 function LegendItem({
   color,
   label,
-}: any) {
+}: LegendProps) {
   return (
     <div className="flex items-center gap-2">
       <div

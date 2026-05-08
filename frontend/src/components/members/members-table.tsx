@@ -3,8 +3,12 @@ import DataTable from "@/components/shared/data-table";
 import EmptyState from "@/components/shared/empty-state";
 import MembersAction from "./members-action";
 import { useRouter } from "next/navigation";
+import { Member } from "@/types";
+interface Props {
+  members: Member[];
+}
 
-export default function MembersTable({ members }: any) {
+export default function MembersTable({ members }: Props) {
   const router = useRouter();
   return (
     <DataTable
@@ -24,6 +28,10 @@ export default function MembersTable({ members }: any) {
           label: "Name",
         },
         {
+          key: "address",
+          label: "Address",
+        },
+        {
           key: "gender",
           label: "Gender",
         },
@@ -34,7 +42,7 @@ export default function MembersTable({ members }: any) {
         {
           key: "actions",
           label: "Actions",
-          render: (_: any, row: any) => <MembersAction memberId={row.id} />,
+          render: (_:any, row: any) => <MembersAction memberId={row.id} />,
         },
       ]}
     />

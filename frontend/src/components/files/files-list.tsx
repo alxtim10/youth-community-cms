@@ -1,11 +1,16 @@
 // src/components/files/files-list.tsx
 
+import { FileResource } from "@/types";
 import FileCard from "./files-card";
 import EmptyState from "@/components/shared/empty-state";
 
+interface Props {
+  files: FileResource[];
+}
+
 export default function FilesList({
   files,
-}: any) {
+}: Props) {
   if (!files.length) {
   return (
     <EmptyState
@@ -19,7 +24,7 @@ export default function FilesList({
 
   return (
     <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-      {files.map((file: any) => (
+      {files.map((file: FileResource) => (
         <FileCard
           key={file.id}
           file={file}
