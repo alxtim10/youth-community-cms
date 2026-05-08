@@ -1,0 +1,23 @@
+# Node.js - node_modules/
+node_modules/
+
+# Python - venvs/ and __pycache__
+venv/
+config/__pycache__
+
+# Java - target/
+target/
+
+# Frontend (assuming it's a React project) - node_modules/
+frontend/node_modules/
+
+# Build directories
+dist/
+build/
+
+# Log files
+*.log
+
+# IDE-specific files
+.idea/
+.vscode/

@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'apps.members',
     'apps.fellowship',
     'apps.dashboard',
+    'apps.analytics',
+    'apps.files',
 
     #Swagger/OpenAPI Docs
     'drf_spectacular',

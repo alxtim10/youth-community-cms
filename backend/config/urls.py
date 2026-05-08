@@ -40,6 +40,16 @@ urlpatterns = [
         'api/dashboard/',
         include('apps.dashboard.urls'),
     ),
+    
+    path(
+        'api/files/',
+        include('apps.files.urls'),
+    ),
+
+    path(
+        'api/analytics/',
+        include('apps.analytics.urls'),
+    ),
 
     # OpenAPI schema
     path(
