@@ -9,6 +9,69 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { createFellowship, updateFellowship } from "@/lib/api";
+import SelectField from "./fellowship-select-field";
+
+const monthOptions = [
+  {
+    label: "January",
+    value: "January",
+  },
+
+  {
+    label: "February",
+    value: "February",
+  },
+
+  {
+    label: "March",
+    value: "March",
+  },
+
+  {
+    label: "April",
+    value: "April",
+  },
+
+  {
+    label: "May",
+    value: "May",
+  },
+
+  {
+    label: "June",
+    value: "June",
+  },
+
+  {
+    label: "July",
+    value: "July",
+  },
+
+  {
+    label: "August",
+    value: "August",
+  },
+
+  {
+    label: "September",
+    value: "September",
+  },
+
+  {
+    label: "October",
+    value: "October",
+  },
+
+  {
+    label: "November",
+    value: "November",
+  },
+
+  {
+    label: "December",
+    value: "December",
+  },
+];
 
 const schema = z.object({
   month: z.string(),
@@ -84,7 +147,11 @@ export default function FellowshipForm({ initialData, fellowshipId }: any) {
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid md:grid-cols-2 gap-6">
-        <InputField label="Month" register={register("month")} />
+        <SelectField
+          label="Month"
+          register={register("month")}
+          options={monthOptions}
+        />
 
         <InputField label="Date" type="date" register={register("date")} />
 
@@ -126,11 +193,33 @@ export default function FellowshipForm({ initialData, fellowshipId }: any) {
         <SelectField
           label="Speaker Status"
           register={register("speaker_status")}
+          options={[
+            {
+              label: "DONE",
+              value: "DONE",
+            },
+
+            {
+              label: "NOT DONE",
+              value: "NOT_DONE",
+            },
+          ]}
         />
 
         <SelectField
           label="Worship Status"
           register={register("worship_team_status")}
+          options={[
+            {
+              label: "DONE",
+              value: "DONE",
+            },
+
+            {
+              label: "NOT DONE",
+              value: "NOT_DONE",
+            },
+          ]}
         />
       </div>
 
@@ -177,23 +266,6 @@ function TextareaField({ label, register }: any) {
         {...register}
         className="w-full rounded-2xl border bg-white px-4 py-3"
       />
-    </div>
-  );
-}
-
-function SelectField({ label, register }: any) {
-  return (
-    <div className="space-y-2">
-      <label className="text-sm font-medium">{label}</label>
-
-      <select
-        {...register}
-        className="w-full rounded-2xl border bg-white px-4 py-3"
-      >
-        <option value="DONE">Done</option>
-
-        <option value="NOT_DONE">Not Done</option>
-      </select>
     </div>
   );
 }

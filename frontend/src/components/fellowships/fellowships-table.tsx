@@ -90,7 +90,7 @@ export default function FellowshipsTable({ fellowships }: Props) {
           key: "actions",
           label: "Actions",
 
-          render: (row: Fellowship) => (
+          render: (_:any, row: any) => (
             <FellowshipsAction fellowshipId={row.id} />
           ),
         },
