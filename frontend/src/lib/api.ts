@@ -1,6 +1,6 @@
 // src/lib/api.ts
 
-export const API_URL = "http://103.247.11.35/api";
+export const API_URL = "https://simuda.duckdns.org/api";
 
 export async function getDashboard() {
   const res = await fetch(`${API_URL}/dashboard/`, {
