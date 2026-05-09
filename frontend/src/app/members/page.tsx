@@ -18,14 +18,14 @@ export default async function MembersPage({ searchParams }: any) {
         <div>
           <h1 className="text-4xl font-bold tracking-tight">Members</h1>
 
-          <p className="text-slate-500 mt-2">Manage youth community members</p>
+          <p className="text-slate-500 mt-2">Manage SIMUDA members</p>
         </div>
 
         <Link
           href="/members/create"
           className="px-5 py-3 rounded-2xl bg-slate-900 text-white"
         >
-          Create Member
+          Add
         </Link>
       </div>
 

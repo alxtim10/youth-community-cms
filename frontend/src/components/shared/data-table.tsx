@@ -9,10 +9,8 @@ import {
 
 type Column = {
   key: string;
-
   label: string;
-
-  render?: (value: any, row: any) => React.ReactNode;
+  render?: (value: any, row: Record<string, unknown>) => React.ReactNode;
 };
 
 type Props = {

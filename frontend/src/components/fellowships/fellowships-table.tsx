@@ -4,8 +4,13 @@ import EmptyState from "@/components/shared/empty-state";
 import FellowshipsAction from "./fellowships-action";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Fellowship } from "@/types";
 
-export default function FellowshipsTable({ fellowships }: any) {
+interface Props {
+  fellowships: Fellowship[];
+}
+
+export default function FellowshipsTable({ fellowships }: Props) {
   const router = useRouter();
 
   return (
@@ -15,8 +20,8 @@ export default function FellowshipsTable({ fellowships }: any) {
       emptyState={
         <EmptyState
           title="No Fellowships Found"
-          description="Create your first fellowship event to start managing schedules and attendance."
-          buttonText="Create Fellowship"
+          description="Add your first fellowship event to start managing schedules and attendance."
+          buttonText="Add Fellowship"
           href="/fellowships/create"
         />
       }
@@ -28,7 +33,6 @@ export default function FellowshipsTable({ fellowships }: any) {
         {
           key: "theme",
           label: "Theme",
-
           render: (value: string, row: any) => (
             <Link
               href={`/fellowships/${row.id}`}
@@ -86,7 +90,7 @@ export default function FellowshipsTable({ fellowships }: any) {
           key: "actions",
           label: "Actions",
 
-          render: (_: any, row: any) => (
+          render: (_:any, row: any) => (
             <FellowshipsAction fellowshipId={row.id} />
           ),
         },

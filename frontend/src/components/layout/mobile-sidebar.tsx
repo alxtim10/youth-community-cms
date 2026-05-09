@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-
 import {
   Menu,
   LayoutDashboard,
@@ -9,19 +8,22 @@ import {
   CalendarDays,
   Folder,
   BarChart3,
+  Calendar,
 } from "lucide-react";
-
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const menus = [
   {
     name: "Dashboard",
     href: "/",
     icon: LayoutDashboard,
+  },
+  {
+    name: "Calendar",
+    href: "/calendar",
+    icon: Calendar,
   },
   {
     name: "Members",
@@ -46,6 +48,7 @@ const menus = [
 ];
 
 export default function MobileSidebar() {
+  const pathname = usePathname();
   return (
     <div className="md:hidden">
       <Sheet>
@@ -57,29 +60,36 @@ export default function MobileSidebar() {
 
         <SheetContent
           side="left"
-          className="w-72 bg-slate-950 text-white border-slate-800"
+          className="w-80 bg-white border-r border-slate-200 p-0"
         >
-          <div className="mt-8">
-            <h1 className="text-2xl font-bold">
-              Youth CMS
+          <SheetTitle></SheetTitle>
+          <div className="px-8 pt-8 pb-4 flex flex-col items-center">
+            <Image src="/logo.png" width={100} height={100} alt="logo" />
+            <h1 className="font-bold text-xl tracking-tight text-slate-900 mt-5">
+              SIMUDA Dashboard
             </h1>
-
-            <p className="text-sm text-slate-400 mt-1">
-              Community Dashboard
-            </p>
           </div>
 
-          <nav className="mt-10 space-y-2">
+          <nav className="space-y-2 px-4">
             {menus.map((menu) => {
               const Icon = menu.icon;
+
+              const isActive =
+                pathname === menu.href ||
+                (menu.href !== "/" && pathname.startsWith(menu.href));
 
               return (
                 <Link
                   key={menu.href}
                   href={menu.href}
-                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white transition-all"
+                  className={`flex items-center gap-4 rounded-2xl px-4 py-3.5 transition-all ${
+                    isActive
+                      ? "bg-slate-900 text-white"
+                      : "text-slate-600 hover:bg-slate-100"
+                  }`}
                 >
                   <Icon size={18} />
+
                   <span>{menu.name}</span>
                 </Link>
               );
