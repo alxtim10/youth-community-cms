@@ -11,7 +11,7 @@ export default async function EditFellowshipPage({ params }: { params: Promise<{
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-4xl font-bold tracking-tight">Edit Fellowship</h1>
+        <h1 className="text-4xl font-bold tracking-tight">Edit</h1>
 
         <p className="text-slate-500 mt-2">Update fellowship event</p>
       </div>

@@ -39,7 +39,7 @@ export default async function MemberDetailPage({
           className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-slate-900 text-white"
         >
           <Pencil size={18} />
-          Edit Member
+          Edit
         </Link>
       </div>
 
