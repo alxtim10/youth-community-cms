@@ -15,7 +15,7 @@ export default async function EditMemberPage({
     <div className="space-y-8">
       <div>
         <h1 className="text-4xl font-bold tracking-tight">
-          Edit Member
+          Edit
         </h1>
 
         <p className="text-slate-500 mt-2">
