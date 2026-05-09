@@ -90,7 +90,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
+CSRF_TRUSTED_ORIGINS = ['https://simuda.duckdns.org']
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
