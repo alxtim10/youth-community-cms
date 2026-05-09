@@ -286,7 +286,7 @@ export async function getAllFellowships() {
 
 export async function getUpcomingFellowship() {
   const res = await fetch(
-    `${API_URL}/fellowships/?ordering=date&page_size=1`,
+    `${API_URL}/fellowships/?ordering=-date&page_size=1`,
     {
       cache: "no-store",
     }
