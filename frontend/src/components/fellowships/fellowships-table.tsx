@@ -28,7 +28,7 @@ export default function FellowshipsTable({ fellowships }: Props) {
       columns={[
         {
           key: "date",
-          label: "Date",
+          label: "Date"
         },
         {
           key: "theme",
@@ -66,7 +66,7 @@ export default function FellowshipsTable({ fellowships }: Props) {
                   : "bg-yellow-100 text-yellow-700"
               }`}
             >
-              {value}
+              {value === "DONE" ? "Done" : "Not Done"}
             </span>
           ),
         },
@@ -82,14 +82,13 @@ export default function FellowshipsTable({ fellowships }: Props) {
                   : "bg-yellow-100 text-yellow-700"
               }`}
             >
-              {value}
+              {value === "DONE" ? "Done" : "Not Done"}
             </span>
           ),
         },
         {
           key: "actions",
           label: "Actions",
-
           render: (_:any, row: any) => (
             <FellowshipsAction fellowshipId={row.id} />
           ),

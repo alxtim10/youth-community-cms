@@ -5,8 +5,18 @@ import FilesSearch from "@/components/files/files-search";
 import FilesList from "@/components/files/files-list";
 import Link from "next/link";
 
-export default async function FilesPage({ searchParams }: any) {
-  const search = searchParams.search || "";
+export default async function FilesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    search?: string;
+  }>;
+}) {
+  const params =
+    await searchParams;
+
+
+  const search = params.search || "";
 
   const data = await getFiles(search);
 

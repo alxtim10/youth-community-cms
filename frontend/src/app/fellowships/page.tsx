@@ -6,12 +6,25 @@ import FellowshipsSearch from "@/components/fellowships/fellowships-search";
 import FellowshipsPagination from "@/components/fellowships/fellowships-pagination";
 import Link from "next/link";
 
-export default async function FellowshipsPage({ searchParams }: any) {
-  const search = searchParams.search || "";
+export default async function FellowshipsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    search?: string;
+    page?: string;
+  }>;
+}) {
 
-  const page = Number(searchParams.page) || 1;
+  const params =
+    await searchParams;
 
-  const data = await getFellowships(search, page);
+  const page =
+    Number(params.page || "1");
+
+    const search = params.search || "";
+
+  const data =
+    await getFellowships(search, page);
 
   return (
     <div className="space-y-6">

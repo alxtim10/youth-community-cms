@@ -5,10 +5,22 @@ import MembersSearch from "@/components/members/members-search";
 import MembersPagination from "@/components/members/members-pagination";
 import Link from "next/link";
 
-export default async function MembersPage({ searchParams }: any) {
-  const search = searchParams.search || "";
+export default async function MembersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    search?: string;
+    page?: string;
+  }>;
+}) {
 
-  const page = Number(searchParams.page) || 1;
+  const params =
+    await searchParams;
+
+  const page =
+    Number(params.page || "1");
+
+    const search = params.search || "";
 
   const data = await getMembers(search, page);
 
