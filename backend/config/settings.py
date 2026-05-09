@@ -14,6 +14,9 @@ from pathlib import Path
 import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 env = environ.Env()
 environ.Env.read_env(BASE_DIR / '.env')
@@ -31,8 +34,7 @@ SECRET_KEY = 'django-insecure-y4)no&b4=7)_$$^-0tcws@4gh26v=qro4su&m_r3ps*f1aw%#b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 # Application definition
 
