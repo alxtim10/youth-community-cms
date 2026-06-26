@@ -109,20 +109,25 @@ export default function FellowshipForm({ initialData, fellowshipId }: any) {
   const router = useRouter();
 
   const isEdit = !!fellowshipId;
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
-
-    defaultValues: initialData || {
+const defaultValues = initialData
+  ? {
+      ...initialData,
+      date: initialData.date?.split("T")[0],
+    }
+  : {
       speaker_status: "NOT_DONE",
       worship_team_status: "NOT_DONE",
       attendance_count: 0,
-    },
-  });
+    };
+
+const {
+  register,
+  handleSubmit,
+  formState: { errors, isSubmitting },
+} = useForm<FormData>({
+  resolver: zodResolver(schema),
+  defaultValues,
+});
 
   async function onSubmit(values: FormData) {
     console.log(values);

@@ -7,6 +7,7 @@ import FellowshipForm from "@/components/fellowships/fellowships-form";
 export default async function EditFellowshipPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const fellowship = await getFellowship(id);
+  
 
   return (
     <div className="space-y-8">
