@@ -5,6 +5,7 @@ import FellowshipsAction from "./fellowships-action";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Fellowship } from "@/types";
+import { formatDate } from "@/lib/utils";
 
 interface Props {
   fellowships: Fellowship[];
@@ -28,7 +29,8 @@ export default function FellowshipsTable({ fellowships }: Props) {
       columns={[
         {
           key: "date",
-          label: "Date"
+          label: "Date",
+          render: (value: string) => formatDate(value),
         },
         {
           key: "theme",
