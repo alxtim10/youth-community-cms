@@ -5,17 +5,29 @@ export const MAX_PAGE_SIZE = 100
 
 // ── Pagination ──────────────────────────────────────────────
 export function parsePagination(req: NextRequest) {
-  const page = Math.max(1, parseInt(req.nextUrl.searchParams.get('page') ?? '1'))
+  const page = Math.max(
+    1,
+    Number(req.nextUrl.searchParams.get("page") ?? "1")
+  );
+
   const pageSize = Math.min(
     MAX_PAGE_SIZE,
-    Math.max(1, parseInt(req.nextUrl.searchParams.get('page_size') ?? String(DEFAULT_PAGE_SIZE)))
-  )
+    Math.max(
+      1,
+      Number(
+        req.nextUrl.searchParams.get("page_size") ??
+        req.nextUrl.searchParams.get("limit") ??
+        DEFAULT_PAGE_SIZE
+      )
+    )
+  );
+
   return {
-    skip: (page - 1) * pageSize,
-    take: pageSize,
     page,
     pageSize,
-  }
+    skip: (page - 1) * pageSize,
+    take: pageSize,
+  };
 }
 
 export function buildPaginatedResponse<T>(
@@ -24,13 +36,17 @@ export function buildPaginatedResponse<T>(
   page: number,
   pageSize: number
 ) {
+  const totalPages = Math.ceil(total / pageSize);
+
   return {
     count: total,
-    total_pages: Math.ceil(total / pageSize),
-    current_page: page,
-    page_size: pageSize,
+
+    next: page < totalPages ? page + 1 : null,
+
+    previous: page > 1 ? page - 1 : null,
+
     results: data,
-  }
+  };
 }
 
 // ── Search (OR across multiple fields) ──────────────────────
