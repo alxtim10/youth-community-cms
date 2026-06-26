@@ -40,11 +40,6 @@ const menus = [
     href: "/files",
     icon: Folder,
   },
-  {
-    name: "Analytics",
-    href: "/analytics",
-    icon: BarChart3,
-  },
 ];
 
 export default function MobileSidebar() {
