@@ -17,31 +17,25 @@ interface LegendProps {
 export default function FellowshipCalendar({ fellowships }: Props) {
   const router = useRouter();
 
-  const events = fellowships.map(
-  (item) => {
+  const events = fellowships.map((item) => {
     const isDone =
-      item.speaker_status ===
-        "DONE" &&
-      item.worship_team_status ===
-        "DONE";
+      item.speaker_status === "DONE" &&
+      item.worship_team_status === "DONE";
+
+    // ✅ Format ke YYYY-MM-DD string, hindari timezone shift
+    const dateStr = typeof item.date === "string"
+      ? item.date.split("T")[0]
+      : new Date(item.date).toISOString().split("T")[0];
 
     return {
       id: String(item.id),
-
       title: item.theme,
-
-      date: item.date,
-
-      backgroundColor: isDone
-        ? "#16a34a"
-        : "#eab308",
-
+      date: dateStr,           // ← plain string, bukan Date object
+      backgroundColor: isDone ? "#16a34a" : "#eab308",
       borderColor: "transparent",
-
       textColor: "#ffffff",
     };
-  }
-);
+  });
 
   return (
     <div className="bg-white rounded-3xl shadow-sm p-6">
@@ -53,6 +47,9 @@ export default function FellowshipCalendar({ fellowships }: Props) {
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
         height="auto"
+        aspectRatio={1.5}          // ← lebih lebar di desktop
+        contentHeight="auto"
+        handleWindowResize={true}  // ← auto resize
         events={events}
         eventClick={(info) => {
           router.push(`/fellowships/${info.event.id}`);
