@@ -10,7 +10,7 @@ import {
   BarChart3,
   Calendar,
 } from "lucide-react";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
@@ -49,6 +49,7 @@ const menus = [
 
 export default function MobileSidebar() {
   const pathname = usePathname();
+
   return (
     <div className="md:hidden">
       <Sheet>
@@ -79,19 +80,20 @@ export default function MobileSidebar() {
                 (menu.href !== "/" && pathname.startsWith(menu.href));
 
               return (
-                <Link
-                  key={menu.href}
-                  href={menu.href}
-                  className={`flex items-center gap-4 rounded-2xl px-4 py-3.5 transition-all ${
-                    isActive
+                <SheetClose asChild key={menu.href}>
+                  <Link
+                    key={menu.href}
+                    href={menu.href}
+                    className={`flex items-center gap-4 rounded-2xl px-4 py-3.5 transition-all ${isActive
                       ? "bg-slate-900 text-white"
                       : "text-slate-600 hover:bg-slate-100"
-                  }`}
-                >
-                  <Icon size={18} />
+                      }`}
+                  >
+                    <Icon size={18} />
 
-                  <span>{menu.name}</span>
-                </Link>
+                    <span>{menu.name}</span>
+                  </Link>
+                </SheetClose>
               );
             })}
           </nav>

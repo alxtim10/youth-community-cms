@@ -7,7 +7,6 @@ export default function Loading() {
     <div className="space-y-8">
       <div>
         <Skeleton className="h-10 w-64 rounded-xl" />
-
         <Skeleton className="h-4 w-96 mt-3 rounded-xl" />
       </div>
 

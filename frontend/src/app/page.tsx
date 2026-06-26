@@ -10,8 +10,13 @@ import UpcomingFellowshipWidget from "@/components/dashboard/upcoming-fellowship
 import SpeakerStatusWidget from "@/components/dashboard/speaker-status-widget";
 import WorshipTeamWidget from "@/components/dashboard/worship-team-widget";
 import QuickActionsWidget from "@/components/dashboard/quick-actions-widget";
+export const dynamic = "force-dynamic";
+async function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export default async function DashboardPage() {
+  await sleep(3000);
   const dashboard = await getDashboard();
   const upcomingData = await getUpcomingFellowship();
   const upcoming = upcomingData.results?.[0];
