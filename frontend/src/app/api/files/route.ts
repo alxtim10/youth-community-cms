@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
     return Response.json(buildPaginatedResponse(data, total, page, pageSize))
   } catch (err) {
     console.error('[GET /api/files]', err)
-    return errorResponse('Internal server error', 500)
+    return errorResponse('Internal server error' + err, 500)
   }
 }
 

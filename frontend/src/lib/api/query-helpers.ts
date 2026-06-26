@@ -1,7 +1,12 @@
 import { NextRequest } from 'next/server'
 
+(BigInt.prototype as any).toJSON = function () {
+  return this.toString()
+}
+
 export const DEFAULT_PAGE_SIZE = 10
 export const MAX_PAGE_SIZE = 100
+
 
 // ── Pagination ──────────────────────────────────────────────
 export function parsePagination(req: NextRequest) {

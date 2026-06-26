@@ -11,6 +11,7 @@ import {
 import {
   getFellowship,
 } from "@/lib/api";
+import { formatDate } from "@/lib/utils";
 
 export default async function FellowshipDetailPage({
   params,
@@ -52,7 +53,7 @@ export default async function FellowshipDetailPage({
         <InfoCard
           icon={<CalendarDays size={20} />}
           title="Date"
-          value={fellowship.date}
+          value={formatDate(fellowship.date)}
         />
 
         <InfoCard
